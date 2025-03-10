@@ -7,7 +7,7 @@ function Navbar() {
             {/* Logo Container */}
             <div className="logo-container">
                 {/* Change '/logo.png' to the path of your actual logo in /public */}
-                <img src="/logo.jpg" alt="Nexalytica Logo" className="logo-img" />
+                <img src="./logo.jpg" alt="Nexalytica Logo" className="logo-img" />
                 <div className="logo-text">Nexalytica</div>
             </div>
 
