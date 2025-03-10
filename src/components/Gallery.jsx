@@ -16,22 +16,22 @@ function Gallery() {
             <div className="gallery-grid">
                 {/* 1st image */}
                 <div className="gallery-item">
-                    <img src="/image1.jpeg" alt="Image 1" />
+                    <img src="./image1.jpeg" alt="Image 1" />
                 </div>
 
                 {/* 2nd image */}
                 <div className="gallery-item">
-                    <img src="/image6.jpeg" alt="Image 2" />
+                    <img src="./image6.jpeg" alt="Image 2" />
                 </div>
 
                 {/* 3rd image */}
                 <div className="gallery-item">
-                    <img src="/image5.jpeg" alt="Image 3" />
+                    <img src="./image5.jpeg" alt="Image 3" />
                 </div>
 
                 {/* 4th image */}
                 <div className="gallery-item">
-                    <img src="/image4.jpeg" alt="Image 4" />
+                    <img src="./image4.jpeg" alt="Image 4" />
                 </div>
             </div>
         </section>
