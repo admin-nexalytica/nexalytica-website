@@ -9,8 +9,8 @@ function VideoShowcase() {
 
             <div className="video-container">
                 {/* Using native browser controls */}
-                <video width="560" height="315" muted="" loop="" autoplay="" controls >
-                    <source src="./nexa_video.mp4" type="video/mp4" />
+                <video width="560" height="315"  controls >
+                    <source src="https://github.com/admin-nexalytica/nexalytica-website/blob/722400bf7bc897cec65e0ff9fa096a28d5881664/public/nexa_video.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>
