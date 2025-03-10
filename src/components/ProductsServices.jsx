@@ -11,7 +11,7 @@ function ProductsServices() {
                 {/* 1. AI-Powered Data Exploration */}
                 <div className="product-item">
                     <img
-                        src="/service_image1.jpeg"
+                        src="./service_image1.jpeg"
                         alt="AI-Powered Data Exploration"
                     />
                     <h3>AI-Powered Data Exploration</h3>
@@ -36,7 +36,7 @@ function ProductsServices() {
                 {/* 2. Intelligent Reporting and Visualization */}
                 <div className="product-item">
                     <img
-                        src="/service_image2.jpeg"
+                        src="./service_image2.jpeg"
                         alt="Intelligent Reporting & Visualization"
                     />
                     <h3>Intelligent Reporting &amp; Visualization</h3>
@@ -61,7 +61,7 @@ function ProductsServices() {
                 {/* 3. Seamless Business Integration */}
                 <div className="product-item">
                     <img
-                        src="/service_image3.jpeg"
+                        src="./service_image3.jpeg"
                         alt="Seamless Business Integration"
                     />
                     <h3>Seamless Business Integration</h3>
@@ -89,7 +89,7 @@ function ProductsServices() {
                 {/* 4. Data & AI Consulting */}
                 <div className="product-item">
                     <img
-                        src="/service_image4.jpeg"
+                        src="./service_image4.jpeg"
                         alt="Data & AI Consulting"
                     />
                     <h3>Data &amp; AI Consulting</h3>
