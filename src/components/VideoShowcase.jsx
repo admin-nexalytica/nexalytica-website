@@ -9,7 +9,7 @@ function VideoShowcase() {
 
             <div className="video-container">
                 {/* Using native browser controls */}
-                <video width="560" height="315" muted="" loop="" autoplay="" controls>
+                <video width="560" height="315" muted="" loop="" autoplay="" controls >
                     <source src="./nexa_video.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
