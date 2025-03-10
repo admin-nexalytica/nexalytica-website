@@ -1,0 +1,31 @@
+.about-section {
+    padding: 60px 20px;
+    /* Gradient background: left to right from #051A30 to #1B0530 */
+    background: linear-gradient(to right, #051A30, #1B0530);
+    text-align: center;
+}
+
+/* Heading styles (h2, h3) */
+.about-section h2,
+.about-section h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    /* Soft neon blue for readability */
+    color: #4EC3FF;
+}
+
+/* Paragraph styles */
+.about-section p {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    /* Light gray text */
+    color: #B0B0B0;
+}
+
+/* (Optional) Highlight class for icons or special text: electric pink (#FF40A0) */
+.about-section .highlight {
+    color: #FF40A0;
+    /* Use this class on icons, spans, or elements you want in electric pink */
+}

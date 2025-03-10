@@ -1,0 +1,165 @@
+/* ProductsServices.css */
+
+/* Section styling */
+.products-services-section {
+    padding: 60px 20px;
+    text-align: center;
+
+    /* Gradient background: Dark Purple (#1B0530) to Rich Magenta (#3D0140) */
+    background: linear-gradient(to right, #1B0530, #3D0140);
+}
+
+/* Main heading text in Vibrant Cyan (#00E6FF) */
+.products-services-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #00E6FF;
+}
+
+/* The container for product items */
+.products-list {
+    display: flex;
+    flex-wrap: wrap;
+    /* allows items to wrap on smaller screens */
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+/* Each product "card" */
+.product-item {
+    /* partial transparency purple/dark background */
+    background-color: #080216ee;
+    padding: 1.5rem;
+    border-radius: 8px;
+    flex: 1 1 200px;
+    /* each item can grow/shrink, min width ~200px */
+    max-width: 300px;
+    text-align: left;
+    /* left-align content */
+    position: relative;
+    color: #fff;
+    /* fallback color for headings within the item */
+}
+
+/* Product images */
+.product-item img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    /* Add transition for a smooth hover animation */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-item h3 {
+    margin-bottom: 0.5rem;
+    text-align: center;
+    /* same vibrant cyan as the main heading for consistency */
+    color: #00E6FF;
+}
+
+/* Subtext in muted light blue (#9AD9FF) */
+.product-item p,
+.product-item ul,
+.product-item ul li {
+    color: #9AD9FF;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+}
+
+/* Remove the default bullet style so only neon icons appear */
+.product-item ul {
+    list-style: none;
+    margin: 0 0 1rem 1.5rem;
+    /* keep indentation if desired */
+    padding: 0;
+}
+
+/* 
+   Neon Glow effect classes for bullet icons:
+     - .icon-pink (Electric Pink #FF40A0)
+     - .icon-blue (Neon Blue #00C6FF)
+     - .icon-purple (Soft Purple #AF52FF)
+   Each class uses ::before to generate a custom bullet with glow.
+*/
+
+/* Electric Pink bullets */
+.icon-pink {
+    list-style: none;
+    padding: 0;
+}
+
+.icon-pink li {
+    position: relative;
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    /* space for bullet */
+}
+
+.icon-pink li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #FF40A0;
+    /* electric pink */
+    text-shadow: 0 0 6px #FF40A0;
+    /* neon glow */
+    font-size: 1.2rem;
+}
+
+/* Neon Blue bullets */
+.icon-blue {
+    list-style: none;
+    padding: 0;
+}
+
+.icon-blue li {
+    position: relative;
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+}
+
+.icon-blue li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #00C6FF;
+    /* neon blue */
+    text-shadow: 0 0 6px #00C6FF;
+    /* neon glow */
+    font-size: 1.2rem;
+}
+
+/* Soft Purple bullets */
+.icon-purple {
+    list-style: none;
+    padding: 0;
+}
+
+.icon-purple li {
+    position: relative;
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+}
+
+.icon-purple li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #AF52FF;
+    /* soft purple */
+    text-shadow: 0 0 6px #AF52FF;
+    /* neon glow */
+    font-size: 1.2rem;
+}
+
+/* -------------------- */
+/* IMAGE HOVER EFFECT   */
+/* -------------------- */
+.product-item:hover img {
+    transform: scale(1.05);
+    /* Adjust glow color or intensity as desired */
+    box-shadow: 0 0 15px #00E6FF;
+    /* Try #FF40A0 for pink glow instead */
+}

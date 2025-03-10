@@ -1,0 +1,85 @@
+.hero-section {
+    position: relative;
+    /* Needed to position our pseudo-element overlay */
+    min-height: 40vh;
+    /* Adjust to 100vh if you want a full-screen hero */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    /* Default text color for other elements (like <p> and button) */
+    color: #fff;
+    padding: 2rem;
+    overflow: hidden;
+    /* Ensures the pseudo-element doesn't overflow the parent */
+}
+
+/* 
+   We use ::before to create an overlay with the image.
+   The 'opacity' applies ONLY to the background image in ::before,
+   not the text or button in .hero-content.
+*/
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Background image overlay */
+    background: url('/hero-bg1.jpeg') center center / cover no-repeat;
+    /* Adjust this to your desired level (0 = transparent, 1 = fully opaque) */
+    opacity: 1.0;
+    /* Ensure the overlay sits behind the .hero-content */
+    z-index: -1;
+}
+
+/* Ensure the hero content sits above the overlay */
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* 
+   Brighter Gradient Text (blue to pink) with a strong glow effect.
+*/
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    /* Makes the letters thicker/brighter */
+
+    /* A bright gradient from neon blue (#00c6ff) to pink (#ff85a2) */
+    background: linear-gradient(90deg, #00c6ff, #ff85a2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Strong glow (fully opaque shadows) */
+    text-shadow:
+        0 0 10px #21b8e2,
+        0 0 20px #b90b33;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    line-height: 1.2;
+}
+
+.hero-content button {
+    background-color: #f59e0b;
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.hero-content button:hover {
+    background-color: #d97706;
+}

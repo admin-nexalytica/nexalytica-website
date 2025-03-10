@@ -1,0 +1,92 @@
+/* Blog.css */
+
+/*
+  Blog Section with Gradient Background:
+  from Dark Indigo (#3B1C5A) to Vibrant Electric Blue (#0078FF)
+*/
+.blog-section {
+    padding: 60px 20px;
+    text-align: center;
+    background: linear-gradient(to right, #3b1c5a, #0078ff);
+}
+
+/* Heading Text: Bright Neon Magenta (#FF2DB4) */
+.blog-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #ff2db4;
+}
+
+/* Container for vertical list of blog posts */
+.blog-list {
+    max-width: 700px;
+    margin: 2rem auto;
+    text-align: left;
+    /* Align text to the left within the container */
+}
+
+/* Individual blog item in the vertical list */
+.blog-item {
+    border-bottom: 1px solid rgba(0, 194, 255, 0.5);
+    /* electric blue border */
+    padding: 1rem 0;
+    position: relative;
+    color: #ffffff;
+}
+
+/* Title row (like FAQ question row) */
+.blog-title {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: text-shadow 0.3s ease;
+}
+
+/* Blog title heading inside the row */
+.blog-title h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #ff2db4;
+    /* bright neon magenta heading */
+}
+
+/* Arrow next to the title, rotate on expand */
+.arrow {
+    font-size: 1.2rem;
+    margin-left: 8px;
+    color: #ff2db4;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Rotate arrow 90deg when expanded */
+.arrow.expanded {
+    transform: rotate(90deg);
+}
+
+/* Hover effect: slight glow in neon cyan (#00F4FF) */
+.blog-title:hover h3,
+.blog-title:hover .arrow {
+    text-shadow: 0 0 5px rgba(0, 244, 255, 0.7);
+}
+
+/* Blog content block with multiline HTML,
+     spacing between paragraphs, etc. */
+.blog-content {
+    margin-top: 0.75rem;
+    line-height: 1.6;
+}
+
+/* Sub-paragraph styling if you want a specific color or margin */
+.blog-content p {
+    margin-bottom: 0.75rem;
+}
+
+/* "Yet to Post" text for empty content posts:
+     Subtle Ice Blue (#C3E8FF, 75% opacity) => rgba(195,232,255,0.75)
+  */
+.yet-to-post {
+    margin-top: 0.5rem;
+    color: rgba(195, 232, 255, 0.75);
+    font-style: italic;
+}

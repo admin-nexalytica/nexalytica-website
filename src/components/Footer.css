@@ -1,0 +1,46 @@
+/* Footer.css */
+
+/* 
+   Background: Gradient from Dark Navy Blue (#010A1A)
+   to Black (#000000)
+*/
+.footer-section {
+    background: linear-gradient(to right, #010a1a, #000000);
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+
+    /* Subtle top border: Electric Purple (#7A1BC2, 40% opacity) */
+    border-top: 1px solid rgba(122, 27, 194, 0.4);
+}
+
+/* Regular text: Soft White (#B0B0B0, 85% opacity) => rgba(176,176,176,0.85) */
+.footer-section p {
+    margin: 0.5rem 0;
+    color: rgba(176, 176, 176, 0.85);
+    font-size: 0.95rem;
+}
+
+/* "Follow us on" heading text: Bright Neon Blue (#00C2FF) */
+.follow-us {
+    color: #00c2ff;
+    font-weight: 600;
+}
+
+/* Social Media Links: Neon Cyan (#00E6FF), 
+     hover -> Neon Pink (#FF40A0), 
+     with an electric blue glow (#00F4FF, 50% opacity)
+  */
+.footer-section a {
+    color: #00e6ff;
+    text-decoration: none;
+    margin: 0 0.3rem;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #ff40a0;
+    /* neon pink */
+    text-shadow: 0 0 6px rgba(0, 244, 255, 0.5);
+    /* glow effect */
+}

@@ -1,0 +1,81 @@
+/* FAQ.css */
+
+/* 
+  Background: 
+  Deep Space Black (#0A0F1F) → Soft Neon Blue (#1A3D5A) 
+*/
+.faq-section {
+    padding: 60px 20px;
+    text-align: center;
+    background: linear-gradient(to right, #0a0f1f, #1a3d5a);
+}
+
+.faq-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #00e6ff;
+    /* Bright Cyan */
+}
+
+/* FAQ list container */
+.faq-list {
+    max-width: 700px;
+    margin: 2rem auto 0;
+    text-align: left;
+    /* Align left for Q&A format */
+}
+
+/* Individual FAQ item */
+.faq-item {
+    /* Glowing Electric Purple (#6C1F60, 30% opacity) */
+    border-bottom: 1px solid rgba(108, 31, 96, 0.3);
+    padding: 1rem 0;
+}
+
+/* FAQ question row with side arrow */
+.faq-question {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: text-shadow 0.3s ease;
+}
+
+/* 
+    Question text: Soft Neon White (#EAEAEA, 85% opacity) 
+    => rgba(234, 234, 234, 0.85)
+  */
+.faq-question h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: rgba(234, 234, 234, 0.85);
+}
+
+/* Arrow next to the question */
+.arrow {
+    font-size: 1.2rem;
+    margin-left: 8px;
+    color: rgba(234, 234, 234, 0.85);
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.arrow.expanded {
+    transform: rotate(90deg);
+    /* Rotate arrow when active */
+}
+
+/* Hover effect: text glows slightly in Electric Blue (#00C2FF, 50% opacity) */
+.faq-question:hover h4,
+.faq-question:hover .arrow {
+    text-shadow: 0 0 5px rgba(0, 194, 255, 0.5);
+}
+
+/* FAQ answer text:
+     Muted Light Blue (#9AD9FF, 80% opacity)
+     => rgba(154, 217, 255, 0.8)
+  */
+.faq-answer {
+    margin-top: 0.5rem;
+    color: rgba(154, 217, 255, 0.8);
+    line-height: 1.5;
+}

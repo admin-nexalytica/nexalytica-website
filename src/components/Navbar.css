@@ -1,0 +1,63 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Gradient background (left to right) from Deep Blue (#051A30) to Dark Purple (#1B0530) */
+    background: linear-gradient(to right, #051A30, #1B0530);
+    padding: 0.5rem 1rem;
+    /* Reduced padding for a shorter navbar */
+    position: sticky;
+    /* "sticky" keeps the navbar on top when scrolling */
+    top: 0;
+    z-index: 999;
+    /* Ensures navbar stays above other content */
+}
+
+/* Logo container to group the image + text together */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* space between the logo image and text */
+}
+
+/* Logo image styling */
+.logo-img {
+    height: 40px;
+    /* Adjust to your preferred size */
+    width: auto;
+    border-radius: 3px;
+    /* optional slight rounding of corners */
+}
+
+/* Logo text styling */
+.logo-text {
+    /* Soft neon blue for readability */
+    color: #4EC3FF;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Navigation links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    /* No special styling needed for <li> itself */
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #f59e0b;
+    /* Highlight color on hover */
+}

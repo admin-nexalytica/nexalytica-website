@@ -1,0 +1,85 @@
+.gallery-section {
+    padding: 60px 20px;
+    text-align: center;
+
+    /* Gradient from Rich Magenta (#3D0140) to Deep Pink (#5B0245) */
+    background: linear-gradient(to right, #3D0140, #5B0245);
+}
+
+/* Placeholder for navigation arrows (if you plan on making a slider) */
+.gallery-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+/* Electric Blue (#00C2FF) arrows */
+.arrow {
+    color: #00C2FF;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Heading text in Bright Neon Cyan (#00F4FF) */
+.gallery-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #00F4FF;
+}
+
+/* The grid layout for images */
+.gallery-grid {
+    display: grid;
+    /* auto-fit will wrap items into new rows when there's not enough space */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    width: 90%;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Each gallery-item container */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    /* ensures hover overlay doesn't overflow the item */
+}
+
+/* A soft border glow effect around images in Neon Pink (#FF40A0)
+     - If you prefer Soft Purple (#A65AFF), replace #FF40A0 accordingly. */
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+
+    border: 2px solid #FF40A0;
+    box-shadow: 0 0 10px #FF40A0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect: 
+     1) Slight scale
+     2) Overlay with a soft blue glow (#004DFF, 30% opacity)
+  */
+.gallery-item:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #FF40A0;
+    /* intensify the glow on hover */
+}
+
+.gallery-item:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 77, 255, 0.3);
+    /* 30% opacity soft blue glow */
+    pointer-events: none;
+    /* ensures hover stays on the item, not the overlay */
+}

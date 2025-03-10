@@ -1,0 +1,41 @@
+/* Contact.css */
+
+/*
+  Background: Gradient from Deep Neon Blue (#1A3D5A)
+  to Dark Violet (#320E48)
+*/
+.contact-section {
+    padding: 60px 20px;
+    text-align: center;
+    background: linear-gradient(to right, #1a3d5a, #320e48);
+}
+
+/* Heading: Bright Neon Cyan (#00F4FF) */
+.contact-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #00f4ff;
+}
+
+/* Basic styling for contact info paragraphs */
+.contact-info {
+    font-size: 1.1rem;
+    color: rgba(234, 234, 234, 0.85);
+    /* Soft white at 85% opacity */
+    margin: 1rem 0;
+}
+
+/* Links in neon cyan with a subtle hover effect */
+.contact-link {
+    color: #00e6ff;
+    /* Neon Cyan */
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Hover effect: shift text to bright magenta (#FF40A0) or add glow */
+.contact-link:hover {
+    color: #ff40a0;
+    /* Bright Magenta */
+    text-shadow: 0 0 5px rgba(255, 64, 160, 0.7);
+}
