@@ -1,5 +1,9 @@
+/* index.css */
+
+/* Import Tailwind base utilities. */
 @import "tailwindcss";
 
+/* Global font and color resets, if desired. */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -15,28 +19,36 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Basic link styling, keep if desired */
 a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
 
+/* Body: remove display: flex & place-items: center 
+   so content flows from top to bottom with no forced centering. */
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  /* Removed:
+     display: flex;
+     place-items: center;
+  */
 }
 
+/* Heading styles remain if still needed */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
 
+/* Buttons remain if you use them */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -48,22 +60,27 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Light mode overrides */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }

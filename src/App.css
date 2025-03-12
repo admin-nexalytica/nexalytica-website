@@ -1,38 +1,51 @@
+/* App.css */
+
+/* 
+  Remove or override the #root constraints to allow full-width sections.
+  You can adjust the padding if you want a small margin inside the site.
+*/
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  /* text-align: center; <-- optional; keep or remove as you wish */
 }
 
+/* Retain your existing .logo styles if still needed */
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+/* Spin keyframe remains if you are still using spinning logos */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
+/* Keep your media query for prefers-reduced-motion if needed */
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
 }
 
+/* Card, read-the-docs, etc. remain if you still use them */
 .card {
   padding: 2em;
 }

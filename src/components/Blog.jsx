@@ -1,15 +1,14 @@
 // Blog.jsx
 import React, { useState } from "react";
-import "./Blog.css";
 
 function Blog() {
-    const [expandedIndex, setExpandedIndex] = useState(null);
+  const [expandedIndex, setExpandedIndex] = useState(null);
 
-    // Updated blog posts
-    const blogPosts = [
-        {
-            title: "Revolutionizing Data Analytics: The Power of LLMs and Generative AI",
-            content: `
+  // Updated blog posts
+  const blogPosts = [
+    {
+      title: "Revolutionizing Data Analytics: The Power of LLMs and Generative AI",
+      content: `
         <p>
           The data analytics landscape is undergoing a seismic shift, driven by the rapid evolution of Generative AI and Large Language Models (LLMs) such as OpenAI's GPT-4. 
           These advanced technologies are reshaping how analysts extract insights, streamline workflows, and unlock deeper, previously unattainable value from vast data sets.
@@ -63,10 +62,10 @@ function Blog() {
           driving innovation and fueling future success.
         </p>
       `
-        },
-        {
-            title: "From Legacy to Innovation: Transforming Business Data Infrastructure",
-            content: `
+    },
+    {
+      title: "From Legacy to Innovation: Transforming Business Data Infrastructure",
+      content: `
         <p>
           In today's fast-paced digital economy, data infrastructure remains the lifeline of businesses. Yet, despite rapid advancements in technology, 
           many organizations continue to rely heavily on traditional, legacy data systems. While these systems have proven reliable in the past, 
@@ -132,57 +131,128 @@ function Blog() {
           Organizations ready to adapt, evolve, and innovate their data strategies today are shaping the future of business intelligence.
         </p>
       `
-        },
-        {
-            title: "Nexalytica Insights - Coming Soon!",
-            content: ""
-        }
-    ];
+    },
+    {
+      title: "Nexalytica Insights - Coming Soon!",
+      content: ""
+    }
+  ];
 
-    const handleToggle = (index) => {
-        setExpandedIndex(expandedIndex === index ? null : index);
-    };
+  const handleToggle = (index) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
 
-    return (
-        <section id="blog" className="blog-section">
-            <h2>Our Blog</h2>
+  return (
+    <section
+      id="blog"
+      className="
+        py-14
+        px-5
+        bg-gradient-to-r
+        from-[#3B1C5A]
+        to-[#0078FF]
+        text-center
+      "
+    >
+      <h2 className="text-2xl mb-4 text-[#FF2DB4]">Our Blog</h2>
 
-            <div className="blog-list">
-                {blogPosts.map((post, index) => {
-                    const hasContent = post.content.trim().length > 0;
-                    const isExpanded = expandedIndex === index;
+      {/* Container for the vertical list of blog posts */}
+      <div
+        className="
+          max-w-3xl
+          mx-auto
+          mt-8
+          text-left
+        "
+      >
+        {blogPosts.map((post, index) => {
+          const hasContent = post.content.trim().length > 0;
+          const isExpanded = expandedIndex === index;
 
-                    return (
-                        <div className="blog-item" key={index}>
-                            {/* Title row with arrow; only clickable if there's content */}
-                            <div
-                                className="blog-title"
-                                onClick={() => hasContent && handleToggle(index)}
-                            >
-                                <h3>{post.title}</h3>
-                                <span className={`arrow ${isExpanded ? "expanded" : ""}`}>
-                                    &gt;
-                                </span>
-                            </div>
+          return (
+            <div
+              key={index}
+              className="
+                border-b
+                border-[rgba(0,194,255,0.5)]
+                py-4
+                text-white
+                relative
+              "
+            >
+              {/* Title row (clickable if there's content) */}
+              <div
+                onClick={() => hasContent && handleToggle(index)}
+                className={`
+                  flex
+                  justify-between
+                  items-center
+                  cursor-pointer
+                  group
+                  transition-all
+                `}
+              >
+                <h3
+                  className="
+                    m-0
+                    text-lg
+                    text-[#FF2DB4]
+                    transition-all
+                  "
+                >
+                  {post.title}
+                </h3>
+                <span
+                  className={`
+                    arrow
+                    text-[#FF2DB4]
+                    text-lg
+                    ml-2
+                    transform
+                    transition-transform
+                    duration-300
+                    ${isExpanded ? "rotate-90" : ""}
+                    group-hover:[text-shadow:0_0_5px_rgba(0,244,255,0.7)]
+                  `}
+                >
+                  &gt;
+                </span>
+              </div>
 
-                            {/* Expand content if there is content and it's the expanded item */}
-                            {hasContent ? (
-                                isExpanded && (
-                                    <div
-                                        className="blog-content"
-                                        dangerouslySetInnerHTML={{ __html: post.content }}
-                                    />
-                                )
-                            ) : (
-                                // Show "Yet to Post" if no content
-                                <p className="yet-to-post">Yet to Post</p>
-                            )}
-                        </div>
-                    );
-                })}
+              {/* Hover glow on the title text itself */}
+              <style>
+                {`
+                  .group:hover h3 {
+                    text-shadow: 0 0 5px rgba(0, 244, 255, 0.7);
+                  }
+                `}
+              </style>
+
+              {/* Expand content if there's text and this item is expanded */}
+              {hasContent ? (
+                isExpanded && (
+                  <div
+                    className="
+                      blog-content
+                      mt-3
+                      leading-relaxed
+                    "
+                    // Renders HTML from the content
+                    dangerouslySetInnerHTML={{ __html: post.content }}
+                  />
+                )
+              ) : (
+                // Show "Yet to Post" if no content
+                <p className="italic text-[rgba(195,232,255,0.75)] mt-2">
+                  Yet to Post
+                </p>
+              )}
             </div>
-        </section>
-    );
+          );
+        })}
+      </div>
+    </section>
+  );
 }
 
 export default Blog;

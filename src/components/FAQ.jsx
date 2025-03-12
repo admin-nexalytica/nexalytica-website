@@ -1,6 +1,5 @@
 // FAQ.jsx
 import React, { useState } from "react";
-import "./FAQ.css";
 
 function FAQ() {
     const [activeIndex, setActiveIndex] = useState(null);
@@ -24,8 +23,7 @@ function FAQ() {
         },
         {
             question: "What support is available?",
-            answer:
-                "24/7 chat support, onboarding guides, and weekly webinars."
+            answer: "24/7 chat support, onboarding guides, and weekly webinars."
         },
         {
             question: "How quickly do I get insights?",
@@ -54,8 +52,7 @@ function FAQ() {
         },
         {
             question: "Can I cancel anytime?",
-            answer:
-                "Yes. No long-term contracts—cancel or downgrade quarterly."
+            answer: "Yes. No long-term contracts—cancel or downgrade quarterly."
         },
         {
             question: "Does Nexalytica support predictive analytics?",
@@ -74,27 +71,106 @@ function FAQ() {
     };
 
     return (
-        <section id="faq" className="faq-section">
-            <h2>Frequently Asked Questions</h2>
+        <section
+            id="faq"
+            className="
+        py-14
+        px-5
+        text-center
+        bg-gradient-to-r
+        from-[#0A0F1F]
+        to-[#1A3D5A]
+      "
+        >
+            <h2
+                className="
+          text-2xl
+          mb-4
+          text-[#00E6FF]
+          font-bold
+        "
+            >
+                Frequently Asked Questions
+            </h2>
 
-            <div className="faq-list">
+            {/* FAQ list container */}
+            <div
+                className="
+          max-w-[700px]
+          mx-auto
+          mt-8
+          text-left
+        "
+            >
                 {faqs.map((faq, idx) => {
                     const isActive = activeIndex === idx;
                     return (
-                        <div key={idx} className="faq-item">
+                        <div
+                            key={idx}
+                            className="
+                border-b
+                border-[rgba(108,31,96,0.3)]
+                py-4
+              "
+                        >
+                            {/* Question row */}
                             <div
-                                className="faq-question"
+                                className="
+                  flex
+                  items-center
+                  justify-between
+                  cursor-pointer
+                  group
+                "
                                 onClick={() => toggleFAQ(idx)}
                             >
-                                <h4>{faq.question}</h4>
-                                {/* Side arrow that rotates when active */}
-                                <span className={`arrow ${isActive ? "expanded" : ""}`}>
+                                <h4
+                                    className="
+                    m-0
+                    text-base
+                    text-[rgba(234,234,234,0.85)]
+                    transition-all
+                    faq-question-text
+                  "
+                                >
+                                    {faq.question}
+                                </h4>
+                                <span
+                                    className={`
+                    text-base
+                    text-[rgba(234,234,234,0.85)]
+                    transform
+                    transition-transform
+                    duration-300
+                    ml-2
+                    faq-arrow
+                    ${isActive ? "rotate-90" : ""}
+                  `}
+                                >
                                     &gt;
                                 </span>
                             </div>
+
+                            {/* Hover Glow: we can do it via a small style block or Tailwind's arbitrary group-hover */}
+                            <style>
+                                {`
+                  .group:hover .faq-question-text,
+                  .group:hover .faq-arrow {
+                    text-shadow: 0 0 5px rgba(0, 194, 255, 0.5);
+                  }
+                `}
+                            </style>
+
+                            {/* Answer content */}
                             {isActive && (
-                                <div className="faq-answer">
-                                    <p>{faq.answer}</p>
+                                <div
+                                    className="
+                    mt-2
+                    text-[rgba(154,217,255,0.8)]
+                    leading-relaxed
+                  "
+                                >
+                                    {faq.answer}
                                 </div>
                             )}
                         </div>
