@@ -33,6 +33,8 @@ function VideoShowcase() {
 			>
 				{/* Using native browser controls */}
 				<video
+					preload="none"
+					autoplay="false"
 					width="560"
 					height="315"
 					controls
