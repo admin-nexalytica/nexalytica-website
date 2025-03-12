@@ -33,6 +33,7 @@ function VideoShowcase() {
 			>
 				{/* Using native browser controls */}
 				<video
+					poster="https://pqazc0omc0duhaei.public.blob.vercel-storage.com/placeholder-dIvL52MqYLMXoqvnMo85qkEPzeaIVl.png"
 					preload="none"
 					autoplay="false"
 					width="560"
