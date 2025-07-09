@@ -1,77 +1,178 @@
-// Contact.jsx
-import React from "react";
+import React, { useState } from "react";
 
 function Contact() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        company: '',
+        message: ''
+    });
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Handle form submission here
+        console.log('Form submitted:', formData);
+    };
+
     return (
-        <section
-            id="contact"
-            className="
-        py-14
-        px-5
-        text-center
-        bg-gradient-to-r
-        from-[#1A3D5A]
-        to-[#320E48]
-      "
-        >
-            <h2
-                className="
-          text-2xl
-          mb-6
-          text-[#00F4FF]
-          font-bold
-        "
-            >
-                Contact Us
-            </h2>
+        <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#1A3D5A] to-[#320E48]">
+            <div className="max-w-7xl mx-auto">
+                {/* Section Header */}
+                <div className="text-center mb-16">
+                    <h2 className="text-4xl md:text-5xl font-bold text-[#00F4FF] mb-4">
+                        Get in Touch
+                    </h2>
+                    <p className="text-[#9AD9FF] text-lg max-w-2xl mx-auto">
+                        Ready to transform your data into actionable insights? Let's start a conversation.
+                    </p>
+                </div>
 
-            <p
-                className="
-          text-[1.1rem]
-          text-[rgba(234,234,234,0.85)]
-          mb-4
-        "
-            >
-                For inquiries, email us at:
-                <br />
-                <a
-                    href="mailto:info@nexalytica.com"
-                    className="
-            text-[#00E6FF]
-            transition-colors
-            duration-300
-            no-underline
-            hover:text-[#FF40A0]
-            hover:[text-shadow:0_0_5px_rgba(255,64,160,0.7)]
-          "
-                >
-                    info@nexalytica.com
-                </a>
-            </p>
+                <div className="grid lg:grid-cols-2 gap-12">
+                    {/* Contact Form */}
+                    <div className="bg-[#080216]/70 backdrop-blur-sm rounded-2xl p-8 border border-[#00C2FF]/30 shadow-[0_0_30px_rgba(0,194,255,0.2)]">
+                        <h3 className="text-2xl font-semibold text-[#00E6FF] mb-6">Send us a Message</h3>
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label className="block text-[#9AD9FF] text-sm font-medium mb-2">
+                                        Your Name
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        className="w-full px-4 py-3 bg-[#0A0F1F]/50 border border-[#00C2FF]/30 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#00E6FF] focus:shadow-[0_0_10px_rgba(0,230,255,0.3)] transition-all duration-300"
+                                        placeholder="John Doe"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-[#9AD9FF] text-sm font-medium mb-2">
+                                        Your Email
+                                    </label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        className="w-full px-4 py-3 bg-[#0A0F1F]/50 border border-[#00C2FF]/30 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#00E6FF] focus:shadow-[0_0_10px_rgba(0,230,255,0.3)] transition-all duration-300"
+                                        placeholder="john@company.com"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label className="block text-[#9AD9FF] text-sm font-medium mb-2">
+                                    Company Name
+                                </label>
+                                <input
+                                    type="text"
+                                    name="company"
+                                    value={formData.company}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-3 bg-[#0A0F1F]/50 border border-[#00C2FF]/30 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#00E6FF] focus:shadow-[0_0_10px_rgba(0,230,255,0.3)] transition-all duration-300"
+                                    placeholder="Your Company"
+                                />
+                            </div>
+                            
+                            <div>
+                                <label className="block text-[#9AD9FF] text-sm font-medium mb-2">
+                                    Message
+                                </label>
+                                <textarea
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    rows="4"
+                                    className="w-full px-4 py-3 bg-[#0A0F1F]/50 border border-[#00C2FF]/30 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#00E6FF] focus:shadow-[0_0_10px_rgba(0,230,255,0.3)] transition-all duration-300 resize-none"
+                                    placeholder="Tell us about your data analytics needs..."
+                                    required
+                                ></textarea>
+                            </div>
+                            
+                            <button
+                                type="submit"
+                                className="w-full py-4 bg-gradient-to-r from-[#00E6FF] to-[#00C2FF] text-black font-semibold rounded-lg hover:shadow-[0_0_20px_rgba(0,230,255,0.5)] transform hover:scale-[1.02] transition-all duration-300"
+                            >
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
 
-            <p
-                className="
-          text-[1.1rem]
-          text-[rgba(234,234,234,0.85)]
-          mb-4
-        "
-            >
-                or call us at:
-                <br />
-                <a
-                    href="+44 7519652463"
-                    className="
-            text-[#00E6FF]
-            transition-colors
-            duration-300
-            no-underline
-            hover:text-[#FF40A0]
-            hover:[text-shadow:0_0_5px_rgba(255,64,160,0.7)]
-          "
-                >
-                    +44 7519652463
-                </a>
-            </p>
+                    {/* Contact Information */}
+                    <div className="space-y-8">
+                        {/* Direct Contact Card */}
+                        <div className="bg-[#080216]/70 backdrop-blur-sm rounded-2xl p-8 border border-[#FF40A0]/30 shadow-[0_0_30px_rgba(255,64,160,0.2)]">
+                            <h3 className="text-2xl font-semibold text-[#FF40A0] mb-6">Direct Contact</h3>
+                            
+                            <div className="space-y-6">
+                                {/* Email */}
+                                <div className="flex items-start space-x-4">
+                                    <div className="w-12 h-12 bg-gradient-to-r from-[#00E6FF] to-[#00C2FF] rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 className="text-[#00E6FF] font-medium mb-1">Email Us</h4>
+                                        <a href="mailto:info@nexalytica.com" className="text-[#9AD9FF] hover:text-[#FF40A0] transition-colors duration-300">
+                                            info@nexalytica.com
+                                        </a>
+                                    </div>
+                                </div>
+
+                                {/* Phone */}
+                                <div className="flex items-start space-x-4">
+                                    <div className="w-12 h-12 bg-gradient-to-r from-[#FF40A0] to-[#FF2DB4] rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 className="text-[#FF40A0] font-medium mb-1">Call Us</h4>
+                                        <a href="tel:+447519652463" className="text-[#9AD9FF] hover:text-[#00E6FF] transition-colors duration-300">
+                                            +44 7519 652463
+                                        </a>
+                                    </div>
+                                </div>
+
+                                {/* Response Time */}
+                                <div className="flex items-start space-x-4">
+                                    <div className="w-12 h-12 bg-gradient-to-r from-[#00C2FF] to-[#0078FF] rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 className="text-[#00C2FF] font-medium mb-1">Response Time</h4>
+                                        <p className="text-[#9AD9FF]">We typically respond within 24 hours</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Schedule Demo Card */}
+                        <div className="bg-gradient-to-r from-[#00E6FF]/10 to-[#FF40A0]/10 rounded-2xl p-8 border border-[#00E6FF]/30">
+                            <h3 className="text-2xl font-semibold text-[#00E6FF] mb-4">Schedule a Demo</h3>
+                            <p className="text-[#9AD9FF] mb-6">
+                                See Nexalytica in action. Book a personalized demo to discover how our AI-powered analytics can transform your business.
+                            </p>
+                            <button className="w-full py-3 bg-gradient-to-r from-[#FF40A0] to-[#FF2DB4] text-white font-semibold rounded-lg hover:shadow-[0_0_20px_rgba(255,64,160,0.5)] transform hover:scale-[1.02] transition-all duration-300">
+                                Book Demo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     );
 }

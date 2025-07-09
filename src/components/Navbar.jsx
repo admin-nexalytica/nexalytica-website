@@ -1,341 +1,116 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    // Handle scroll effect
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 20);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const navItems = [
+        { href: "#hero", label: "Home" },
+        { href: "#about", label: "About" },
+        { href: "#products-services", label: "Services" },
+        { href: "#gallery", label: "Gallery" },
+        { href: "#blog", label: "Blog" },
+        { href: "#contact", label: "Contact" },
+    ];
 
     return (
-        <nav
-            className="
-        w-full
-        sticky
-        top-0
-        z-[999]
-        bg-gradient-to-r
-        from-[#051A30]
-        to-[#1B0530]
-        px-4
-        py-2
-      "
-        >
-            <div className="flex items-center justify-between">
-                {/* Logo & Brand */}
-                <div className="flex items-center gap-2">
-                    <img
-                        src="./logo.jpg"
-                        alt="Nexalytica Logo"
-                        className="h-8 w-auto rounded-[3px]"
-                    />
-                    <div className="text-[#4EC3FF] font-bold text-base">
-                        Nexalytica
+        <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+            isScrolled 
+                ? 'bg-gray-900/95 backdrop-blur-md shadow-lg' 
+                : 'bg-gradient-to-r from-gray-900/80 to-purple-900/80 backdrop-blur-sm'
+        }`}>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between h-16">
+                    {/* Logo */}
+                    <div className="flex items-center">
+                        <a href="#hero" className="flex items-center space-x-3 group">
+                            <img
+                                src="/optimized/logo-400w.webp"
+                                alt="Nexalytica"
+                                className="h-10 w-10 rounded-lg shadow-md group-hover:shadow-cyan-500/50 transition-shadow duration-300"
+                            />
+                            <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-pink-400 bg-clip-text text-transparent">
+                                Nexalytica
+                            </span>
+                        </a>
+                    </div>
+
+                    {/* Desktop Navigation */}
+                    <div className="hidden md:block">
+                        <div className="ml-10 flex items-baseline space-x-4">
+                            {navItems.map((item) => (
+                                <a
+                                    key={item.href}
+                                    href={item.href}
+                                    className="relative px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-300 group"
+                                >
+                                    {item.label}
+                                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-pink-400 transition-all duration-300 group-hover:w-full"></span>
+                                </a>
+                            ))}
+                            <a 
+                                href="#contact"
+                                className="ml-4 px-6 py-2 bg-gradient-to-r from-cyan-500 to-pink-500 text-white font-medium rounded-full hover:shadow-lg hover:shadow-cyan-500/25 transform hover:scale-105 transition-all duration-300 inline-block"
+                            >
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Mobile menu button */}
+                    <div className="md:hidden">
+                        <button
+                            onClick={() => setIsOpen(!isOpen)}
+                            className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500 transition-all duration-300"
+                        >
+                            <span className="sr-only">Open main menu</span>
+                            {!isOpen ? (
+                                <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                                </svg>
+                            ) : (
+                                <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            )}
+                        </button>
                     </div>
                 </div>
-
-                {/* Hamburger Toggle (Mobile Only) */}
-                <button
-                    onClick={() => setIsOpen(!isOpen)}
-                    className="
-            md:hidden
-            text-white
-            px-2
-            py-1
-            rounded
-            /* 
-              Neon pink background 
-              (the 'tile' for the dropdown toggle)
-            */
-            bg-[#FF40A0]
-
-            /* If you want the button to change color on hover:
-               hover:bg-[#f59e0b] 
-               or keep it the same if you prefer
-            */
-            transition-colors
-            duration-300
-          "
-                >
-                    <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
-                        {isOpen ? (
-                            // X icon
-                            <path
-                                fillRule="evenodd"
-                                clipRule="evenodd"
-                                d="M4.293 4.293a1 1 0 011.414 0L12 
-                  10.586l6.293-6.293a1 1 0 011.414 
-                  1.414L13.414 12l6.293 6.293a1 1 
-                  0 01-1.414 1.414L12 13.414l-6.293 
-                  6.293a1 1 0 01-1.414-1.414L10.586 
-                  12 4.293 5.707a1 1 0 010-1.414z"
-                            />
-                        ) : (
-                            // Hamburger icon
-                            <path
-                                fillRule="evenodd"
-                                clipRule="evenodd"
-                                d="M4 5h16a1 1 0 110 2H4a1 1 
-                  0 110-2zm0 6h16a1 1 0 110 2H4a1 
-                  1 0 110-2zm0 6h16a1 1 0 110 
-                  2H4a1 1 0 110-2z"
-                            />
-                        )}
-                    </svg>
-                </button>
-
-                {/* Desktop Nav */}
-                <ul className="hidden md:flex items-center gap-4">
-                    <li>
-                        <a
-                            href="#hero"
-                            className="
-                text-white
-                px-2
-                py-1
-                rounded
-                transition-colors
-                duration-300
-                hover:text-[#f59e0b]
-                hover:bg-[#f59e0b]/20
-              "
-                        >
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#about"
-                            className="
-                text-white
-                px-2
-                py-1
-                rounded
-                transition-colors
-                duration-300
-                hover:text-[#f59e0b]
-                hover:bg-[#f59e0b]/20
-              "
-                        >
-                            About
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#products-services"
-                            className="
-                text-white
-                px-2
-                py-1
-                rounded
-                transition-colors
-                duration-300
-                hover:text-[#f59e0b]
-                hover:bg-[#f59e0b]/20
-              "
-                        >
-                            Products &amp; Services
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#gallery"
-                            className="
-                text-white
-                px-2
-                py-1
-                rounded
-                transition-colors
-                duration-300
-                hover:text-[#f59e0b]
-                hover:bg-[#f59e0b]/20
-              "
-                        >
-                            Gallery
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#blog"
-                            className="
-                text-white
-                px-2
-                py-1
-                rounded
-                transition-colors
-                duration-300
-                hover:text-[#f59e0b]
-                hover:bg-[#f59e0b]/20
-              "
-                        >
-                            Blog
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#schedule"
-                            className="
-                text-white
-                px-2
-                py-1
-                rounded
-                transition-colors
-                duration-300
-                hover:text-[#f59e0b]
-                hover:bg-[#f59e0b]/20
-              "
-                        >
-                            Schedule
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#contact"
-                            className="
-                text-white
-                px-2
-                py-1
-                rounded
-                transition-colors
-                duration-300
-                hover:text-[#f59e0b]
-                hover:bg-[#f59e0b]/20
-              "
-                        >
-                            Contact
-                        </a>
-                    </li>
-                </ul>
             </div>
 
-            {/* Mobile Nav (only if isOpen) */}
-            {isOpen && (
-                <ul
-                    className="
-            md:hidden
-            mt-2
-            bg-[#051A30]
-            p-2
-            rounded
-          "
-                >
-                    <li>
+            {/* Mobile menu */}
+            <div className={`md:hidden transition-all duration-300 ease-in-out ${
+                isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+            }`}>
+                <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900/95 backdrop-blur-md">
+                    {navItems.map((item) => (
                         <a
-                            href="#hero"
-                            className="
-                block
-                text-white
-                px-2
-                py-1
-                rounded
-                hover:text-[#f59e0b]
-                hover:bg-[#f59e0b]/20
-              "
+                            key={item.href}
+                            href={item.href}
                             onClick={() => setIsOpen(false)}
+                            className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-all duration-300"
                         >
-                            Home
+                            {item.label}
                         </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#about"
-                            className="
-                block
-                text-white
-                px-2
-                py-1
-                rounded
-                hover:text-[#f59e0b]
-                hover:bg-[#f59e0b]/20
-              "
-                            onClick={() => setIsOpen(false)}
-                        >
-                            About
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#products-services"
-                            className="
-                block
-                text-white
-                px-2
-                py-1
-                rounded
-                hover:text-[#f59e0b]
-                hover:bg-[#f59e0b]/20
-              "
-                            onClick={() => setIsOpen(false)}
-                        >
-                            Products &amp; Services
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#gallery"
-                            className="
-                block
-                text-white
-                px-2
-                py-1
-                rounded
-                hover:text-[#f59e0b]
-                hover:bg-[#f59e0b]/20
-              "
-                            onClick={() => setIsOpen(false)}
-                        >
-                            Gallery
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#blog"
-                            className="
-                block
-                text-white
-                px-2
-                py-1
-                rounded
-                hover:text-[#f59e0b]
-                hover:bg-[#f59e0b]/20
-              "
-                            onClick={() => setIsOpen(false)}
-                        >
-                            Blog
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#schedule"
-                            className="
-                block
-                text-white
-                px-2
-                py-1
-                rounded
-                hover:text-[#f59e0b]
-                hover:bg-[#f59e0b]/20
-              "
-                            onClick={() => setIsOpen(false)}
-                        >
-                            Schedule
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#contact"
-                            className="
-                block
-                text-white
-                px-2
-                py-1
-                rounded
-                hover:text-[#f59e0b]
-                hover:bg-[#f59e0b]/20
-              "
-                            onClick={() => setIsOpen(false)}
-                        >
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-            )}
+                    ))}
+                    <a 
+                        href="#contact"
+                        className="w-full mt-4 px-6 py-2 bg-gradient-to-r from-cyan-500 to-pink-500 text-white font-medium rounded-full hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 inline-block text-center"
+                        onClick={() => setIsOpen(false)}
+                    >
+                        Get Started
+                    </a>
+                </div>
+            </div>
         </nav>
     );
 }
