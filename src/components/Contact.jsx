@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import emailjs from '@emailjs/browser';
+// Contact form with EmailJS integration
 
 function Contact() {
     const [formData, setFormData] = useState({
@@ -57,10 +58,31 @@ function Contact() {
                 message: ''
             });
         } catch (error) {
-            console.error('Error sending email:', error);
+            console.error('EmailJS Error Details:', {
+                error: error,
+                message: error.message,
+                status: error.status,
+                text: error.text
+            });
+            
+            // Provide more specific error messages
+            let errorMessage = 'Sorry, there was an error sending your message. ';
+            
+            if (error.text === 'The user ID is required') {
+                errorMessage += 'Configuration error. Please contact support.';
+            } else if (error.text && error.text.includes('service_id')) {
+                errorMessage += 'Email service not properly configured.';
+            } else if (error.text && error.text.includes('template_id')) {
+                errorMessage += 'Email template not found.';
+            } else if (error.text && error.text.includes('Gmail_API')) {
+                errorMessage += 'Gmail authentication issue. Please try again later.';
+            } else {
+                errorMessage += 'Please try again or contact us directly at info@nexalytica.com';
+            }
+            
             setSubmitStatus({
                 type: 'error',
-                message: 'Sorry, there was an error sending your message. Please try again or contact us directly.'
+                message: errorMessage
             });
         } finally {
             setIsSubmitting(false);
