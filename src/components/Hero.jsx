@@ -55,7 +55,7 @@ function Hero() {
                     </span>
                 </h1>
                 
-                <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto animate-fade-in-up animation-delay-200">
+                <p className="text-lg sm:text-xl md:text-2xl text-white/90 font-medium mb-8 max-w-3xl mx-auto animate-fade-in-up animation-delay-200" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>
                     Transforming data into insights with AI-powered analytics
                 </p>
                 
@@ -73,11 +73,15 @@ function Hero() {
             </div>
             
             {/* Scroll indicator */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a 
+                href="#about"
+                className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer hover:scale-110 transition-transform duration-300"
+                aria-label="Scroll to next section"
+            >
                 <svg className="w-6 h-6 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                     <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                 </svg>
-            </div>
+            </a>
         </section>
     );
 }

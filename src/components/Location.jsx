@@ -109,43 +109,6 @@ function Location() {
                                 </div>
                             </div>
                         </div>
-
-                        {/* Transportation Info */}
-                        <div className="bg-gradient-to-r from-[#FF40A0]/10 to-[#00E6FF]/10 rounded-2xl p-8 border border-[#FF40A0]/30">
-                            <h3 className="text-xl font-semibold text-[#FF40A0] mb-4">Getting Here</h3>
-                            
-                            <div className="space-y-4 text-[#9AD9FF]">
-                                <div className="flex items-start space-x-3">
-                                    <svg className="w-5 h-5 text-[#00E6FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                                    </svg>
-                                    <div>
-                                        <p className="font-medium text-white">By Train</p>
-                                        <p className="text-sm">5 min walk from Glasgow Central Station</p>
-                                    </div>
-                                </div>
-                                
-                                <div className="flex items-start space-x-3">
-                                    <svg className="w-5 h-5 text-[#FF40A0] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-                                    </svg>
-                                    <div>
-                                        <p className="font-medium text-white">By Bus</p>
-                                        <p className="text-sm">Multiple bus routes stop nearby</p>
-                                    </div>
-                                </div>
-                                
-                                <div className="flex items-start space-x-3">
-                                    <svg className="w-5 h-5 text-[#00C2FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-                                    </svg>
-                                    <div>
-                                        <p className="font-medium text-white">Parking</p>
-                                        <p className="text-sm">Public parking available nearby</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import ProductsServices from './components/ProductsServices';
+import KPISection from './components/KPISection';
 import Gallery from './components/Gallery';
 import Blog from './components/Blog';
 /*import ScheduleBanner from "./components/ScheduleBanner";*/
@@ -24,6 +25,7 @@ function App() {
       <Hero />
       <About />
       <ProductsServices />
+      <KPISection />
       <Gallery />
       <Blog />
       {/*<Team />*/}
