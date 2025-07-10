@@ -49,9 +49,9 @@ function Hero() {
             {/* Hero content */}
             <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 animate-fade-in-up">
-                    Welcome to
+                    Smarter Business Decision  In Minutes
                     <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#00E6FF] to-[#FF40A0] mt-2">
-                        Nexalytica
+                       
                     </span>
                 </h1>
                 

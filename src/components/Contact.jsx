@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from '@emailjs/browser';
 
 function Contact() {
     const [formData, setFormData] = useState({
@@ -7,6 +8,9 @@ function Contact() {
         company: '',
         message: ''
     });
+    
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
 
     const handleChange = (e) => {
         setFormData({
@@ -15,10 +19,52 @@ function Contact() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle form submission here
-        console.log('Form submitted:', formData);
+        setIsSubmitting(true);
+        setSubmitStatus({ type: '', message: '' });
+        
+        try {
+            // Initialize EmailJS with your public key
+            emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY");
+            
+            // Send email
+            const templateParams = {
+                from_name: formData.name,
+                from_email: formData.email,
+                company: formData.company || 'Not provided',
+                message: formData.message,
+                to_email: 'info@nexalytica.com' // Your receiving email
+            };
+            
+            await emailjs.send(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
+                templateParams
+            );
+            
+            // Success
+            setSubmitStatus({
+                type: 'success',
+                message: 'Thank you for your message! We\'ll get back to you within 24 hours.'
+            });
+            
+            // Reset form
+            setFormData({
+                name: '',
+                email: '',
+                company: '',
+                message: ''
+            });
+        } catch (error) {
+            console.error('Error sending email:', error);
+            setSubmitStatus({
+                type: 'error',
+                message: 'Sorry, there was an error sending your message. Please try again or contact us directly.'
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -101,10 +147,26 @@ function Contact() {
                             
                             <button
                                 type="submit"
-                                className="w-full py-4 bg-gradient-to-r from-[#00E6FF] to-[#00C2FF] text-black font-semibold rounded-lg hover:shadow-[0_0_20px_rgba(0,230,255,0.5)] transform hover:scale-[1.02] transition-all duration-300"
+                                disabled={isSubmitting}
+                                className={`w-full py-4 font-semibold rounded-lg transform transition-all duration-300 ${
+                                    isSubmitting 
+                                        ? 'bg-gray-600 cursor-not-allowed' 
+                                        : 'bg-gradient-to-r from-[#00E6FF] to-[#00C2FF] text-black hover:shadow-[0_0_20px_rgba(0,230,255,0.5)] hover:scale-[1.02]'
+                                }`}
                             >
-                                Send Message
+                                {isSubmitting ? 'Sending...' : 'Send Message'}
                             </button>
+                            
+                            {/* Status Messages */}
+                            {submitStatus.message && (
+                                <div className={`mt-4 p-4 rounded-lg text-center ${
+                                    submitStatus.type === 'success' 
+                                        ? 'bg-green-500/20 border border-green-500/50 text-green-400'
+                                        : 'bg-red-500/20 border border-red-500/50 text-red-400'
+                                }`}>
+                                    {submitStatus.message}
+                                </div>
+                            )}
                         </form>
                     </div>
 
