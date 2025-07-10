@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import Section from './Section';
+import Heading from './Heading';
+import Card from './Card';
+import AnimatedButton from './AnimatedButton';
 
 function ProductsServices() {
     const [openItems, setOpenItems] = useState([false, false, false, false]);
@@ -78,17 +82,16 @@ function ProductsServices() {
     ];
 
     return (
-        <section id="products-services" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
-            <div className="max-w-7xl mx-auto">
-                {/* Section Header */}
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-400 mb-4">
-                        Products & Services
-                    </h2>
-                    <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                        Empowering businesses with cutting-edge AI and data analytics solutions
-                    </p>
-                </div>
+        <Section id="products-services" gradient="secondary" pattern>
+            {/* Section Header */}
+            <div className="text-center mb-16">
+                <Heading level={2}>
+                    Products & Services
+                </Heading>
+                <p className="text-gray-300 text-lg max-w-2xl mx-auto animate-fadeInUp" style={{ animationDelay: '200ms' }}>
+                    Empowering businesses with cutting-edge AI and data analytics solutions
+                </p>
+            </div>
 
                 {/* Services Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -208,8 +211,18 @@ function ProductsServices() {
                         </div>
                     ))}
                 </div>
+            
+            {/* Call to Action */}
+            <div className="text-center mt-16">
+                <AnimatedButton 
+                    onClick={() => window.location.href = '#contact'}
+                    variant="primary"
+                    className="mx-auto"
+                >
+                    Get Started with Nexalytica
+                </AnimatedButton>
             </div>
-        </section>
+        </Section>
     );
 }
 

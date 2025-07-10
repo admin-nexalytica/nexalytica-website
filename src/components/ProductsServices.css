@@ -1,19 +1,23 @@
 /* ProductsServices.css */
 
-/* Section styling */
 .products-services-section {
-    padding: 60px 20px;
+    padding: var(--space-4xl) var(--space-xl);
     text-align: center;
-
-    /* Gradient background: Dark Purple (#1B0530) to Rich Magenta (#3D0140) */
-    background: linear-gradient(to right, #1B0530, #3D0140);
+    background: linear-gradient(135deg, var(--color-primary-darker), var(--color-accent-purple));
+    position: relative;
 }
 
-/* Main heading text in Vibrant Cyan (#00E6FF) */
 .products-services-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #00E6FF;
+    font-family: var(--font-display);
+    font-size: var(--font-4xl);
+    font-weight: 700;
+    margin-bottom: var(--space-2xl);
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
+    animation: fadeInUp 0.8s ease-out;
 }
 
 /* The container for product items */
@@ -26,53 +30,72 @@
     margin-top: 2rem;
 }
 
-/* Each product "card" */
 .product-item {
-    /* partial transparency purple/dark background */
-    background-color: #080216ee;
-    padding: 1.5rem;
-    border-radius: 8px;
-    flex: 1 1 200px;
-    /* each item can grow/shrink, min width ~200px */
-    max-width: 300px;
+    background: var(--color-bg-card);
+    backdrop-filter: blur(10px);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    flex: 1 1 280px;
+    max-width: 350px;
     text-align: left;
-    /* left-align content */
     position: relative;
-    color: #fff;
-    /* fallback color for headings within the item */
+    color: var(--color-text-primary);
+    border: 1px solid rgba(0, 230, 255, 0.1);
+    transition: all var(--transition-base);
+    animation: fadeInUp 0.8s ease-out;
+    animation-fill-mode: both;
 }
 
-/* Product images */
+.product-item:nth-child(1) { animation-delay: 0.1s; }
+.product-item:nth-child(2) { animation-delay: 0.2s; }
+.product-item:nth-child(3) { animation-delay: 0.3s; }
+.product-item:nth-child(4) { animation-delay: 0.4s; }
+
+.product-item:hover {
+    transform: translateY(-5px);
+    background: var(--color-bg-card-hover);
+    box-shadow: var(--shadow-card-hover), var(--shadow-glow-cyan);
+    border-color: var(--color-accent-cyan);
+}
+
 .product-item img {
     width: 100%;
     height: auto;
-    margin-bottom: 1rem;
-    border-radius: 5px;
-    /* Add transition for a smooth hover animation */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: var(--space-lg);
+    border-radius: var(--radius-md);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
 .product-item h3 {
-    margin-bottom: 0.5rem;
+    font-family: var(--font-display);
+    font-size: var(--font-2xl);
+    font-weight: 600;
+    margin-bottom: var(--space-md);
     text-align: center;
-    /* same vibrant cyan as the main heading for consistency */
-    color: #00E6FF;
+    color: var(--color-accent-cyan);
+    letter-spacing: -0.01em;
 }
 
-/* Subtext in muted light blue (#9AD9FF) */
-.product-item p,
+.product-item p {
+    font-family: var(--font-sans);
+    font-size: var(--font-base);
+    color: var(--color-text-secondary);
+    line-height: var(--line-relaxed);
+    margin-bottom: var(--space-md);
+}
+
 .product-item ul,
 .product-item ul li {
-    color: #9AD9FF;
-    line-height: 1.6;
-    margin-bottom: 0.75rem;
+    font-family: var(--font-sans);
+    font-size: var(--font-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-normal);
+    margin-bottom: var(--space-sm);
 }
 
-/* Remove the default bullet style so only neon icons appear */
 .product-item ul {
     list-style: none;
-    margin: 0 0 1rem 1.5rem;
-    /* keep indentation if desired */
+    margin: 0 0 var(--space-md) var(--space-lg);
     padding: 0;
 }
 

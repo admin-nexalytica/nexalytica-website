@@ -15,12 +15,11 @@ import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Location from './components/Location';
 import Footer from './components/Footer';
+import BottomNav from './components/BottomNav';
 
 function App() {
   return (
     <div className='App'>
-
-
       <Navbar />
       <Hero />
       <About />
@@ -35,6 +34,7 @@ function App() {
       <Contact />
       <Location />
       <Footer />
+      <BottomNav />
     </div>
   );
 }

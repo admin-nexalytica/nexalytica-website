@@ -1,31 +1,72 @@
 .about-section {
-    padding: 60px 20px;
-    /* Gradient background: left to right from #051A30 to #1B0530 */
-    background: linear-gradient(to right, #051A30, #1B0530);
+    padding: var(--space-4xl) var(--space-xl);
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary-darker));
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Heading styles (h2, h3) */
-.about-section h2,
+.about-section::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 230, 255, 0.05) 0%, transparent 70%);
+    animation: float 20s ease-in-out infinite;
+}
+
+.about-section h2 {
+    font-family: var(--font-display);
+    font-size: var(--font-4xl);
+    font-weight: 700;
+    margin-bottom: var(--space-lg);
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
+    animation: fadeInUp 0.8s ease-out;
+}
+
 .about-section h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    /* Soft neon blue for readability */
-    color: #4EC3FF;
+    font-family: var(--font-display);
+    font-size: var(--font-2xl);
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+    color: var(--color-accent-cyan);
+    letter-spacing: -0.01em;
 }
 
-/* Paragraph styles */
 .about-section p {
+    font-family: var(--font-sans);
     max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
-    font-size: 1.1rem;
-    /* Light gray text */
-    color: #B0B0B0;
+    margin: 0 auto var(--space-xl);
+    line-height: var(--line-relaxed);
+    font-size: var(--font-lg);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-normal);
+    animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
-/* (Optional) Highlight class for icons or special text: electric pink (#FF40A0) */
 .about-section .highlight {
-    color: #FF40A0;
-    /* Use this class on icons, spans, or elements you want in electric pink */
+    color: var(--color-accent-pink);
+    font-weight: var(--font-semibold);
+    text-shadow: 0 0 20px rgba(255, 64, 160, 0.5);
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+    .about-section h2 {
+        font-size: var(--font-3xl);
+    }
+    
+    .about-section h3 {
+        font-size: var(--font-xl);
+    }
+    
+    .about-section p {
+        font-size: var(--font-base);
+    }
 }

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import AnimatedButton from './AnimatedButton';
+import FloatingParticles from './FloatingParticles';
 
 function Hero() {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -44,6 +46,9 @@ function Hero() {
                 
                 {/* Gradient overlay for better text contrast */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
+                
+                {/* Floating particles */}
+                <FloatingParticles />
             </div>
             
             {/* Hero content */}
@@ -60,15 +65,17 @@ function Hero() {
                 </p>
                 
                 <div className="flex justify-center animate-fade-in-up animation-delay-400">
-                    <a 
-                        href="#about" 
-                        className="px-10 py-4 bg-gradient-to-r from-[#00E6FF] to-[#FF40A0] text-white font-semibold rounded-full hover:shadow-lg hover:shadow-[#00E6FF]/50 transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center"
+                    <AnimatedButton 
+                        onClick={() => window.location.href = '#about'}
+                        variant="primary"
                     >
-                        Learn More
-                        <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
-                    </a>
+                        <span className="flex items-center">
+                            Learn More
+                            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </span>
+                    </AnimatedButton>
                 </div>
             </div>
             

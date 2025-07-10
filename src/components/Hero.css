@@ -1,26 +1,17 @@
 .hero-section {
     position: relative;
-    /* Needed to position our pseudo-element overlay */
-    min-height: 40vh;
-    /* Adjust to 100vh if you want a full-screen hero */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-
-    /* Default text color for other elements (like <p> and button) */
-    color: #fff;
-    padding: 2rem;
+    color: var(--color-text-primary);
+    padding: var(--space-xl);
     overflow: hidden;
-    /* Ensures the pseudo-element doesn't overflow the parent */
+    background: var(--gradient-primary);
 }
 
-/* 
-   We use ::before to create an overlay with the image.
-   The 'opacity' applies ONLY to the background image in ::before,
-   not the text or button in .hero-content.
-*/
 .hero-section::before {
     content: "";
     position: absolute;
@@ -28,58 +19,126 @@
     left: 0;
     right: 0;
     bottom: 0;
-    /* Background image overlay */
     background: url('/hero-bg1.jpeg') center center / cover no-repeat;
-    /* Adjust this to your desired level (0 = transparent, 1 = fully opaque) */
-    opacity: 1.0;
-    /* Ensure the overlay sits behind the .hero-content */
-    z-index: -1;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.hero-section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-hero);
+    z-index: 1;
+    pointer-events: none;
 }
 
 /* Ensure the hero content sits above the overlay */
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeInUp 1s ease-out;
 }
 
-/* 
-   Brighter Gradient Text (blue to pink) with a strong glow effect.
-*/
 .hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-    /* Makes the letters thicker/brighter */
-
-    /* A bright gradient from neon blue (#00c6ff) to pink (#ff85a2) */
-    background: linear-gradient(90deg, #00c6ff, #ff85a2);
+    font-family: var(--font-display);
+    font-size: clamp(var(--font-4xl), 8vw, var(--font-6xl));
+    margin-bottom: var(--space-lg);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    background: var(--gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
-    /* Strong glow (fully opaque shadows) */
-    text-shadow:
-        0 0 10px #21b8e2,
-        0 0 20px #b90b33;
+    background-clip: text;
+    filter: drop-shadow(0 0 30px rgba(0, 230, 255, 0.5));
+    animation: fadeInUp 1s ease-out 0.2s both;
 }
 
 .hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    max-width: 600px;
-    line-height: 1.2;
+    font-size: var(--font-xl);
+    margin-bottom: var(--space-2xl);
+    max-width: 800px;
+    line-height: var(--line-relaxed);
+    color: var(--color-text-secondary);
+    animation: fadeInUp 1s ease-out 0.4s both;
 }
 
 .hero-content button {
-    background-color: #f59e0b;
-    color: #fff;
+    background: var(--gradient-button);
+    color: var(--color-text-primary);
     border: none;
-    padding: 1rem 2rem;
+    padding: var(--space-md) var(--space-2xl);
     cursor: pointer;
-    font-size: 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    font-size: var(--font-lg);
+    font-weight: var(--font-medium);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-base);
+    box-shadow: 0 4px 15px rgba(255, 64, 160, 0.3);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.hero-content button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
 }
 
 .hero-content button:hover {
-    background-color: #d97706;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 64, 160, 0.4), var(--shadow-glow-pink);
+}
+
+.hero-content button:hover::before {
+    left: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 100vh;
+        min-height: 100dvh; /* Dynamic viewport height for mobile */
+        padding: var(--space-md);
+    }
+    
+    .hero-content h1 {
+        font-size: clamp(2rem, 8vw, 3rem);
+        margin-bottom: var(--space-md);
+    }
+    
+    .hero-content p {
+        font-size: clamp(1rem, 3vw, 1.25rem);
+        margin-bottom: var(--space-xl);
+    }
+    
+    .hero-content button {
+        font-size: var(--font-base);
+        padding: var(--space-md) var(--space-xl);
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.75rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
 }
