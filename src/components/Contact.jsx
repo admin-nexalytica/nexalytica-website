@@ -26,8 +26,16 @@ function Contact() {
         setSubmitStatus({ type: '', message: '' });
         
         try {
+            const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+            const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+            const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+            
+            if (!publicKey || !serviceId || !templateId) {
+                throw new Error('EmailJS configuration is missing. Please contact support.');
+            }
+            
             // Initialize EmailJS with your public key
-            emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY");
+            emailjs.init(publicKey);
             
             // Send email
             const templateParams = {
@@ -39,8 +47,8 @@ function Contact() {
             };
             
             await emailjs.send(
-                import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
-                import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
+                serviceId,
+                templateId,
                 templateParams
             );
             
@@ -62,7 +70,9 @@ function Contact() {
                 error: error,
                 message: error.message,
                 status: error.status,
-                text: error.text
+                text: error.text,
+                response: error.response,
+                details: JSON.stringify(error)
             });
             
             // Provide more specific error messages
